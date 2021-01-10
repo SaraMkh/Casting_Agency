@@ -1,11 +1,13 @@
-from app import db
+import os
 from sqlalchemy import Column, String, Integer, create_engine
 from flask_sqlalchemy import SQLAlchemy
-
+import json
+import datetime
 
 DB_Name= "Casting_Agency"
-DB_path = "postgres://{}/{}".format('localhost:5432', DB_Name)
-db.SQLAlchemy()
+#DB_path = "postgres://{}/{}".format('sosomohhamud@localhost:5432', DB_Name)
+DB_path ='postgresql://postgres:sosomohhamud@localhost:5432/Casting_Agency'
+db=SQLAlchemy()
 '''
 setup the db
 
@@ -13,7 +15,7 @@ setup the db
 def setup_db(app,DB_path=DB_path ):
     app.config["SQLALCHEMY_DATABASE_URI"]=DB_path
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
-    db,app=app
+    db.app=app
     db.init_app(app)
     db.create_all()
 
@@ -25,7 +27,7 @@ class Movie(db.Model):
     __tablename__='Movie'
     id = Column(Integer, primary_key=True)
     title = Column(String(250))
-    date = Column(DataTime())
+    date = Column( db.DateTime )
 
     def __init__(self,title,date ):
         self.title=title
