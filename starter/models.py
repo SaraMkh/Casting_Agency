@@ -4,9 +4,9 @@ from flask_sqlalchemy import SQLAlchemy
 import json
 import datetime
 
-DB_Name= "Casting_Agency"
+DB_Name= "Casting_Agency2"
 #DB_path = "postgres://{}/{}".format('sosomohhamud@localhost:5432', DB_Name)
-DB_path ='postgresql://postgres:sosomohhamud@localhost:5432/Casting_Agency'
+DB_path ='postgresql://postgres:sosomohhamud@localhost:5432/Casting_Agency2'
 db=SQLAlchemy()
 '''
 setup the db
@@ -17,7 +17,7 @@ def setup_db(app,DB_path=DB_path ):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
     db.app=app
     db.init_app(app)
-    db.create_all()
+    #db.create_all()
 
 '''
 The Models
@@ -58,31 +58,31 @@ Actors with attributes name, age and gender
 
 '''
 
-class Contract(db.Model):
-    __tablename__ = 'Contract'
+# class Contract(db.Model):
+#     __tablename__ = 'Contract'
 
-    id = db.Column(db.Integer, primary_key=True)
-    movie_id = db.Column(db.Integer, db.ForeignKey('Movie.id'), nullable=False)
-    actor_id = db.Column(db.Integer, db.ForeignKey('Actor.id'), nullable=False)
+#     id = db.Column(db.Integer, primary_key=True)
+#     movie_id = db.Column(db.Integer, db.ForeignKey('Movie.id'), nullable=False)
+#     actor_id = db.Column(db.Integer, db.ForeignKey('Actor.id'), nullable=False)
  
-#    def __repr__(self):
-#       return f'<Contract: {self.id}, movie_id: {self.movie_id}, actor_id: {self.actor_id}>'
-    def __init__(self,movie_id,actor_id ):
+# #    def __repr__(self):
+# #       return f'<Contract: {self.id}, movie_id: {self.movie_id}, actor_id: {self.actor_id}>'
+#     def __init__(self,movie_id,actor_id ):
 
-        self.movie_id=movie_id
-        self.actor_id=actor_id
+#         self.movie_id=movie_id
+#         self.actor_id=actor_id
 
-    def insert(self):
-        db.session.add(self)
-        db.session.commit()
+#     def insert(self):
+#         db.session.add(self)
+#         db.session.commit()
 
-    def update(self):
-        db.session.commit()
+#     def update(self):
+#         db.session.commit()
 
 
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
+#     def delete(self):
+#         db.session.delete(self)
+#         db.session.commit()
 '''
 
 Movies with attributes title and release date
