@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 
 from models import setup_db, Movie, Actor
+from auth import AuthError, requires_auth
 def create_app(test_config=None):
   # create and configure the app
   app = Flask(__name__)
@@ -29,7 +30,8 @@ def create_app(test_config=None):
   GET /actors and /movies
   '''
   @app.route('/movies', methods=['GET'])
-  def get_movies():
+  @requires_auth('get:movies')
+  def get_movies(payload):
           try:
               # get all available movies
               movies = Movie.query.all()
@@ -41,7 +43,8 @@ def create_app(test_config=None):
               abort(500)
 
   @app.route('/actors', methods=['GET'])
-  def get_actors():
+  @requires_auth('get:actors')
+  def get_actors(payload):
         try:
             # get all available actors
             actors = Actor.query.all()
@@ -58,8 +61,8 @@ def create_app(test_config=None):
   '''
 
   @app.route('/movies', methods=['POST'])
-  #@requires_auth('post:movies')
-  def create_movie():
+  @requires_auth('post:movies')
+  def create_movie(payload):
           body = request.get_json()
           if body is None:
               abort(401)
@@ -76,8 +79,8 @@ def create_app(test_config=None):
               raise error
   
   @app.route('/actors', methods=['POST'])
-  #@requires_auth('post:actors')
-  def create_actor():
+  @requires_auth('post:actors')
+  def create_actor(payload):
           body = request.get_json()
           if body is None:
               abort(401)
@@ -86,7 +89,7 @@ def create_app(test_config=None):
           new_gender = body.get('gender', None)
           new_movie_id = body.get('movie_id', None)
           try:
-              new_actor = actor(name=new_name, age=new_age,new_gender= gender, new_movie_id=movie_id)
+              new_actor = Actor(name=new_name, age=new_age,gender=new_gender, movie_id=new_movie_id)
               new_actor.insert()
               return jsonify({
                   'success': True,
@@ -99,8 +102,8 @@ def create_app(test_config=None):
   PATCH /actors/ and /movies/
   '''
   @app.route('/movies/<id>', methods=['PATCH'])
-  #@requires_auth('patch:movies')
-  def update_movie_details( id):
+  @requires_auth('patch:movies')
+  def update_movie_details( payload,id):
 
           try:
               find_movie = Movie.query.filter(Movie.id == id).first()
@@ -122,8 +125,8 @@ def create_app(test_config=None):
               raise error
 
   @app.route('/actors/<id>', methods=['PATCH'])
-  #@requires_auth('patch:actors')
-  def update_actor_details( id):
+  @requires_auth('patch:actors')
+  def update_actor_details( payload,id):
 
           try:
               find_actor = Actor.query.filter(Actor.id == id).first()
@@ -155,8 +158,8 @@ def create_app(test_config=None):
   '''
 
   @app.route('/movies/<id>', methods=['DELETE'])
-  #@requires_auth('delete:movies')
-  def delete_movies(id):
+  @requires_auth('delete:movies')
+  def delete_movies(payload,id):
           try:
               find_movie = Movie.query.filter(Movie.id == id).first()
               if find_movie is None:
@@ -171,10 +174,10 @@ def create_app(test_config=None):
               raise error
 
   @app.route('/actors/<id>', methods=['DELETE'])
-  #@requires_auth('delete:actors')
-  def delete_actors(id):
+  @requires_auth('delete:actors')
+  def delete_actors(  payload,id):
           try:
-              find_actor = actor.query.filter(actor.id == id).first()
+              find_actor = Actor.query.filter(Actor.id == id).first()
               if find_actor is None:
                   abort(404)
               else:
@@ -185,6 +188,77 @@ def create_app(test_config=None):
                       }), 200
           except Exception as error:
               raise error
+
+
+  @app.errorhandler(422)
+  def unprocessable(error):
+      return jsonify({
+                      "success": False,
+                      "error": 422,
+                      "message": "unprocessable"
+                      }), 422
+
+  '''
+  @TODO implement error handlers using the @app.errorhandler(error) decorator
+      each error handler should return (with approprate messages):
+              jsonify({
+                      "success": False,
+                      "error": 404,
+                      "message": "resource not found"
+                      }), 404
+
+  '''
+
+  '''
+  @TODO implement error handler for 404
+      error handler should conform to general task above
+  '''
+
+
+  @app.errorhandler(404)
+  def resource_not_found(error):
+      return jsonify({
+                      "success": False,
+                      "error": 404,
+                      "message": "resource not found"
+                      }), 404
+
+  @app.errorhandler(400)
+  def bad_request(error):
+      return jsonify({
+                      "success": False,
+                      "error": 400,
+                      "message": "Bad Request"
+                      }), 400
+
+
+  @app.errorhandler(405)
+  def method_not_allowed(error):
+      return jsonify({
+                      "success": False,
+                      "error": 405,
+                      "message": "Method Not Allowed"
+                      }), 405
+
+
+  @app.errorhandler(500)
+  def Internal_Server_Error(error):
+      return jsonify({
+                      "success": False,
+                      "error": 500,
+                      "message": 'Internal Server Error'
+                      }), 500
+
+
+  '''
+  @TODO implement error handler for AuthError
+      error handler should conform to general task above
+  '''
+  @app.errorhandler(AuthError)
+  def auth_error(err):
+      response = jsonify(err.error)
+      response.status_code = err.status_code
+      return response
 
 
   return app
