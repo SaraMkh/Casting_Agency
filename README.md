@@ -35,14 +35,14 @@ $ flask run app.py
 Backend_Base URL: http://127.0.0.1:8080/
 
 ### Endpoints:
-    -GET '/'
-        return welcome message.
+-GET '/'
+    return welcome message.
 
             {
             'message':' Welcome to The Casting Agency company '
             }
-    -GET '/movies'
-        return all available movies.
+-GET '/movies'
+    return all available movies.
 
          {
              "movies": [
@@ -66,8 +66,8 @@ Backend_Base URL: http://127.0.0.1:8080/
          }
 
 
-    -GET '/actors'
-        return all available actors,
+-GET '/actors'
+    return all available actors,
 
 
     {
@@ -106,48 +106,50 @@ Backend_Base URL: http://127.0.0.1:8080/
         "success": true
     }
 
-    -POST '/movies'
-        Create a new movie,
-        which will require the title and released date of the movie ,
+-POST '/movies'
+    Create a new movie,
+    which will require the title and released date of the movie ,
         
             {
             "movie": (the entered movie)", 
             "success": true
             }
 
-    -POST '/actors'
-        Create a new actor,
-        which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+-POST '/actors'
+    Create a new actor,
+    which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
         
             {
             "actor": (the entered actor)", 
             "success": true
             }
-            
-    -PATCH '/movies/<id>'
-        Update an existing movie,
-        which will require the title and released date of the movie.
+
+-PATCH '/movies/<id>'
+    Update an existing movie,
+    which will require the title and released date of the movie.
         
             {
             "movie": (the movie after the Update)", 
             "success": true
             }
-    -PATCH '/actors/<id>'
-        Update an existing actor,
-        which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+-PATCH '/actors/<id>'
+    Update an existing actor,
+    which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
         
             {
             "movie": (the actor after the Update)", 
             "success": true
             }
-    -DELETE '/movies/<id>'
-        DELETE a movie using it's ID
+-DELETE '/movies/<id>'
+    DELETE a movie using it's ID
+    
             {
             "movie": (the movie after the Update)", 
             "success": true
             }
-       -DELETE '/actors/<id>'
-            DELETE a actor using it's ID
+   -DELETE '/actors/<id>'
+        DELETE a actor using it's ID
+    
                 {
                 "movie": (the actor after the Update)", 
                 "success": true
