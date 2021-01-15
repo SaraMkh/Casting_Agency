@@ -70,41 +70,41 @@ Backend_Base URL: http://127.0.0.1:8080/
         return all available actors,
 
 
-{
-    "actors": [
-        {
-            "age": 58,
-            "gender": "Male",
-            "movie_id": 1,
-            "name": "Thomas Cruise Mapother"
-        },
-        {
-            "age": 55,
-            "gender": "Female",
-            "movie_id": 1,
-            "name": "Valeria Golino"
-        },
-        {
-            "age": 53,
-            "gender": "Male",
-            "movie_id": 2,
-            "name": "Eric Banadinović "
-        },
-        {
-            "age": 38,
-            "gender": "Female",
-            "movie_id": 3,
-            "name": "Natalie Dormer"
-        },
-        {
-            "age": 37,
-            "gender": "Male",
-            "movie_id": 3,
-            "name": "Eoin Christopher Macken"
-        }
-    ],
-    "success": true
-}
+    {
+        "actors": [
+            {
+                "age": 58,
+                "gender": "Male",
+                "movie_id": 1,
+                "name": "Thomas Cruise Mapother"
+            },
+            {
+                "age": 55,
+                "gender": "Female",
+                "movie_id": 1,
+                "name": "Valeria Golino"
+            },
+            {
+                "age": 53,
+                "gender": "Male",
+                "movie_id": 2,
+                "name": "Eric Banadinović "
+            },
+            {
+                "age": 38,
+                "gender": "Female",
+                "movie_id": 3,
+                "name": "Natalie Dormer"
+            },
+            {
+                "age": 37,
+                "gender": "Male",
+                "movie_id": 3,
+                "name": "Eoin Christopher Macken"
+            }
+        ],
+        "success": true
+    }
 
     -POST '/movies'
         Create a new movie,
@@ -146,12 +146,12 @@ Backend_Base URL: http://127.0.0.1:8080/
             "movie": (the movie after the Update)", 
             "success": true
             }
-   -DELETE '/actors/<id>'
-        DELETE a actor using it's ID
-            {
-            "movie": (the actor after the Update)", 
-            "success": true
-            }
+       -DELETE '/actors/<id>'
+            DELETE a actor using it's ID
+                {
+                "movie": (the actor after the Update)", 
+                "success": true
+                }
 #### How to run the test file 
 
 
