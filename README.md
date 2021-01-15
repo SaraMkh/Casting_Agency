@@ -44,67 +44,66 @@ Backend_Base URL: http://127.0.0.1:8080/
 -GET '/movies'
     return all available movies.
 
-         {
-             "movies": [
-                 {
-                     "date": "Fri, 16 Dec 1988 21:30:00 GMT",
-                     "id": 1,
-                     "title": "Rain Man"
-                 },
-                 {
-                     "date": "Fri, 20 Jun 2003 21:30:00 GMT",
-                     "id": 2,
-                     "title": "Hulk"
-                 },
-                 {
-                     "date": "Fri, 08 Jan 2016 09:30:00 GMT",
-                     "id": 3,
-                     "title": "The Forest"
-                 }
-             ],
-             "success": true
-         }
+             {
+                 "movies": [
+                     {
+                         "date": "Fri, 16 Dec 1988 21:30:00 GMT",
+                         "id": 1,
+                         "title": "Rain Man"
+                     },
+                     {
+                         "date": "Fri, 20 Jun 2003 21:30:00 GMT",
+                         "id": 2,
+                         "title": "Hulk"
+                     },
+                     {
+                         "date": "Fri, 08 Jan 2016 09:30:00 GMT",
+                         "id": 3,
+                         "title": "The Forest"
+                     }
+                 ],
+                 "success": true
+             }
 
 
 -GET '/actors'
     return all available actors,
 
-
-    {
-        "actors": [
             {
-                "age": 58,
-                "gender": "Male",
-                "movie_id": 1,
-                "name": "Thomas Cruise Mapother"
-            },
-            {
-                "age": 55,
-                "gender": "Female",
-                "movie_id": 1,
-                "name": "Valeria Golino"
-            },
-            {
-                "age": 53,
-                "gender": "Male",
-                "movie_id": 2,
-                "name": "Eric Banadinović "
-            },
-            {
-                "age": 38,
-                "gender": "Female",
-                "movie_id": 3,
-                "name": "Natalie Dormer"
-            },
-            {
-                "age": 37,
-                "gender": "Male",
-                "movie_id": 3,
-                "name": "Eoin Christopher Macken"
+                "actors": [
+                    {
+                        "age": 58,
+                        "gender": "Male",
+                        "movie_id": 1,
+                        "name": "Thomas Cruise Mapother"
+                    },
+                    {
+                        "age": 55,
+                        "gender": "Female",
+                        "movie_id": 1,
+                        "name": "Valeria Golino"
+                    },
+                    {
+                        "age": 53,
+                        "gender": "Male",
+                        "movie_id": 2,
+                        "name": "Eric Banadinović "
+                    },
+                    {
+                        "age": 38,
+                        "gender": "Female",
+                        "movie_id": 3,
+                        "name": "Natalie Dormer"
+                    },
+                    {
+                        "age": 37,
+                        "gender": "Male",
+                        "movie_id": 3,
+                        "name": "Eoin Christopher Macken"
+                    }
+                ],
+                "success": true
             }
-        ],
-        "success": true
-    }
 
 -POST '/movies'
     Create a new movie,
@@ -149,11 +148,11 @@ Backend_Base URL: http://127.0.0.1:8080/
             }
    -DELETE '/actors/<id>'
         DELETE a actor using it's ID
-    
-                {
-                "movie": (the actor after the Update)", 
-                "success": true
-                }
+
+            {
+            "movie": (the actor after the Update)", 
+            "success": true
+            }
 #### How to run the test file 
 
 
