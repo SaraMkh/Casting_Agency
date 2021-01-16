@@ -1,6 +1,6 @@
 # Casting Agency Project (the backend)
 
-The main activity for the Casting Agency is to produce some movie, also, assign actors to these movie. the executive producer has the responsibility of creating a system to simplify and streamline the Agency process.
+The main activity for the Casting Agency is to produce some movie, also, assign actors to these movie. the executive producer has the responsibility of creating a system to simplify and streamline the Agency process. The Casting Agency project hosted on heroku [link](https://castingagency21.herokuapp.com)
 
 ## Motivation 
 the Casting Agency project is the final project in the FSND udacity class. This project take stock of all what we have learned through the course of this nanodegree. In this Capstone project, we have been challenged to use all of the concepts and the skills taught in the courses to build an API from start to finish and host it.
