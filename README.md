@@ -161,3 +161,7 @@ To run the tests, run
 $ dropdb Casting_AgencyTest
 $ createdb Casting_AgencyTest
 $ python3 test_app.py
+```
+
+## author
+Sarah Mohammed and The udacity team that made the starter code of the Casting Agency Project .
