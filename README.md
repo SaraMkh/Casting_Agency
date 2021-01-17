@@ -26,7 +26,9 @@ This will install all of the required packages we selected within the `requireme
 #### How to run the development server
 
 $ export FLASK_APP=app
+
 $ export FLASK_ENV=development # enables debug mode
+
 $ flask run app.py
 
 ## RBAC controls
