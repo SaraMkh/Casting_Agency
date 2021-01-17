@@ -5,7 +5,7 @@ The main activity for the Casting Agency is to produce some movie, also, assign 
 ## Motivation 
 the Casting Agency project is the final project in the FSND udacity class. This project take stock of all what we have learned through the course of this nanodegree. In this Capstone project, we have been challenged to use all of the concepts and the skills taught in the courses to build an API from start to finish and host it.
 
-### Project Dependencies
+## Project Dependencies
 
 #### Python 3.8
 
@@ -29,21 +29,35 @@ $ export FLASK_APP=app
 $ export FLASK_ENV=development # enables debug mode
 $ flask run app.py
 
+## RBAC controls
+the main roles in this project:
 
+**Casting Assistant**
+   - Can view actors and movies
+   
+**Casting Director**
+   - All permissions a Casting Assistant has and…
+   - Add or delete an actor from the database
+   - Modify actors or movies
+   
+**Executive Producer**
+  -  All permissions a Casting Director has and…
+  -  Add or delete a movie from the database
 ## API Reference
 
 Backend_Base URL: http://127.0.0.1:8080/
 
 ### Endpoints:
 -GET '/'
-    return welcome message.
+return welcome message.
+Data:
 
             {
             'message':' Welcome to The Casting Agency company '
             }
 -GET '/movies'
-    return all available movies.
-
+return all available movies.
+Data:
              {
                  "movies": [
                      {
@@ -67,7 +81,8 @@ Backend_Base URL: http://127.0.0.1:8080/
 
 
 -GET '/actors'
-    return all available actors,
+return all available actors
+Data:
 
             {
                 "actors": [
@@ -106,8 +121,9 @@ Backend_Base URL: http://127.0.0.1:8080/
             }
 
 -POST '/movies'
-    Create a new movie,
-    which will require the title and released date of the movie ,
+Create a new movie,
+which will require the title and released date of the movie
+Data:
         
             {
             "movie": (the entered movie)", 
@@ -115,8 +131,9 @@ Backend_Base URL: http://127.0.0.1:8080/
             }
 
 -POST '/actors'
-    Create a new actor,
-    which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+Create a new actor,
+which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+Data:
         
             {
             "actor": (the entered actor)", 
@@ -124,39 +141,43 @@ Backend_Base URL: http://127.0.0.1:8080/
             }
 
 -PATCH '/movies/<id>'
-    Update an existing movie,
-    which will require the title and released date of the movie.
+Update an existing movie,
+which will require the title and released date of the movie.
+Data:
         
             {
             "movie": (the movie after the Update)", 
             "success": true
             }
 -PATCH '/actors/<id>'
-    Update an existing actor,
-    which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+Update an existing actor,
+which will require the name, age, gender and movie id (which movie he will acto in it) of the actor.
+Data:
         
             {
             "movie": (the actor after the Update)", 
             "success": true
             }
 -DELETE '/movies/<id>'
-    DELETE a movie using it's ID
+DELETE a movie using it's ID
+Data:
     
             {
             "movie": (the movie after the Update)", 
             "success": true
             }
    -DELETE '/actors/<id>'
-        DELETE a actor using it's ID
+DELETE a actor using it's ID
+Data:
 
             {
             "movie": (the actor after the Update)", 
             "success": true
             }
-#### How to run the test file 
+## How to run the test file 
 
 
-To run the tests, run
+To run the tests, run 
 ```
 $ dropdb Casting_AgencyTest
 $ createdb Casting_AgencyTest
